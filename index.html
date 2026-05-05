@@ -39,10 +39,10 @@
               La HopeDent, pacienții găsesc servicii stomatologice complete, medici specialiști și o abordare atentă, într-un spațiu modern și primitor.
             </p>
 
-            <div class="hero-btns">
-              <a class="btn-white" href="programare.html">Programează-te</a>
-              <a class="btn-ghost-white" href="specialitati/index.html">Vezi specialitățile</a>
-            </div>
+             <div class="hero-btns">
+               <a class="btn-white" href="contact.html">Programează-te</a>
+               <a class="btn-ghost" href="specialitati.html">Descoperă tratamentele</a>
+             </div>
 
           </div>
         </div>
@@ -76,7 +76,7 @@
           </div>
 
           <div class="about-home-media">
-            <img src="assets/img/about.webp" alt="Interior clinică stomatologică HopeDent">
+            <img src="assets/img/indexdespre.jpeg" alt="Interior clinică stomatologică HopeDent">
           </div>
         </div>
 
@@ -133,9 +133,9 @@
           </a>
         </div>
 
-        <div class="section-actions section-actions--center">
-          <a class="btn-dark" href="specialitati/index.html">Vezi toate specialitățile</a>
-        </div>
+         <div class="section-actions section-actions--center">
+           <a class="btn-dark" href="specialitati.html">Vezi toate specialitățile</a>
+         </div>
 
       </div>
     </section>
@@ -287,7 +287,7 @@
             </div>
           </div>
 
-          <form class="contact-form" action="#" method="post">
+          <form class="contact-form" id="contactForm">
             <div class="form-head">
               <h3>Cerere de programare</h3>
               <p>Completează datele, iar echipa HopeDent te va contacta pentru confirmare.</p>
@@ -295,14 +295,19 @@
 
             <div class="form-grid">
               <div class="form-field">
-                <label for="nume">Nume</label>
-                <input type="text" id="nume" name="nume" placeholder="Numele tău" required>
+                <label for="prenume">Prenume</label>
+                <input type="text" id="prenume" name="prenume" placeholder="Prenumele tău" required>
               </div>
 
               <div class="form-field">
-                <label for="telefon">Telefon</label>
-                <input type="tel" id="telefon" name="telefon" placeholder="07xx xxx xxx" required>
+                <label for="nume">Nume</label>
+                <input type="text" id="nume" name="nume" placeholder="Numele tău" required>
               </div>
+            </div>
+
+            <div class="form-field">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" placeholder="07xx xxx xxx" required>
             </div>
 
             <div class="form-field">
@@ -325,7 +330,18 @@
               <textarea id="mesaj" name="mesaj" rows="5" placeholder="Scrie pe scurt motivul programării..."></textarea>
             </div>
 
-            <button class="btn-dark form-submit" type="submit">Trimite cererea</button>
+            <div class="form-field form-field--checkbox">
+              <label class="checkbox-label">
+                <input type="checkbox" id="gdpr" name="gdpr" required>
+                <span class="checkmark" aria-hidden="true"></span>
+                <span class="checkbox-text">
+                  Sunt de acord cu <a href="politica-gdpr.html">politica de confidențialitate și GDPR</a>
+                </span>
+              </label>
+            </div>
+
+            <button class="btn-dark form-submit" type="submit" id="submitBtn">Trimite cererea</button>
+            <div id="formMessage" class="form-message" style="display: none;"></div>
           </form>
 
         </div>
@@ -337,6 +353,7 @@
 
   <div id="site-footer"></div>
 
+  <script src="assets/js/contact-form.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
