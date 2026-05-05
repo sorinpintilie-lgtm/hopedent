@@ -171,10 +171,10 @@ function getRouteKey(path) {
 
   if (
     normalized === '/specialitati' ||
-    normalized === '/specialitati.html' ||
+    normalized === '/tratamente.html' ||
     normalized.startsWith('/specialitati/')
   ) {
-    return 'specialitati';
+    return 'tratamente';
   }
 
   if (
@@ -265,43 +265,91 @@ function initStickyNav(nav) {
 }
 
 function initMobileSliders() {
-  if (window.innerWidth > 768) return;
-
   const sliders = document.querySelectorAll('[data-mobile-slider]');
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
 
-  sliders.forEach((slider) => {
+  const setupSlider = (slider) => {
     if (slider.dataset.sliderReady === 'true') return;
-    slider.dataset.sliderReady = 'true';
 
-    const items = Array.from(slider.children);
-    if (!items.length) return;
+    const items = Array.from(slider.children).filter((child) => {
+      return !child.classList.contains('slider-dots');
+    });
+
+    if (items.length <= 1) return;
+
+    slider.dataset.sliderReady = 'true';
 
     const dotsContainer = document.createElement('div');
     dotsContainer.className = 'slider-dots';
+    dotsContainer.setAttribute('aria-hidden', 'true');
 
-    const dots = items.map((_, index) => {
-      const dot = document.createElement('span');
+    const dots = items.map((item, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
       dot.className = index === 0 ? 'dot active' : 'dot';
+      dot.setAttribute('aria-label', `Slide ${index + 1}`);
+
+      dot.addEventListener('click', () => {
+        slider.scrollTo({
+          left: item.offsetLeft - slider.offsetLeft,
+          behavior: 'smooth'
+        });
+      });
+
       dotsContainer.appendChild(dot);
       return dot;
     });
 
-    slider.parentNode.insertBefore(dotsContainer, slider.nextSibling);
+    slider.insertAdjacentElement('afterend', dotsContainer);
 
     const updateActiveDot = () => {
-      const itemWidth = slider.clientWidth;
-      if (!itemWidth) return;
+      let activeIndex = 0;
+      let closestDistance = Infinity;
 
-      const currentIndex = Math.round(slider.scrollLeft / itemWidth);
+      items.forEach((item, index) => {
+        const distance = Math.abs(slider.scrollLeft - (item.offsetLeft - slider.offsetLeft));
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          activeIndex = index;
+        }
+      });
 
       dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
+        dot.classList.toggle('active', index === activeIndex);
       });
     };
 
     slider.addEventListener('scroll', updateActiveDot, { passive: true });
+    window.addEventListener('resize', updateActiveDot);
+
     updateActiveDot();
-  });
+  };
+
+  const refreshSliders = () => {
+    sliders.forEach((slider) => {
+      const existingDots = slider.nextElementSibling;
+
+      if (!mobileQuery.matches) {
+        if (existingDots && existingDots.classList.contains('slider-dots')) {
+          existingDots.remove();
+        }
+
+        slider.dataset.sliderReady = 'false';
+        return;
+      }
+
+      setupSlider(slider);
+    });
+  };
+
+  refreshSliders();
+
+  if (mobileQuery.addEventListener) {
+    mobileQuery.addEventListener('change', refreshSliders);
+  } else {
+    mobileQuery.addListener(refreshSliders);
+  }
 }
 
 function initIncludeProtocolNotice() {
