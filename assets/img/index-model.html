@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HopeDent - Clinică stomatologică ultramodernă în Comarnic, Prahova. Urgențe, pedodonție, implantologie și estetică dentară. Programează-te la 0734 872 962!">
+<meta name="keywords" content="stomatolog Comarnic, dentist Comarnic, HopeDent, implant dentar, urgente stomatologice Sinaia, aparat dentar">
+<title>HopeDent — Clinică Stomatologică Comarnic</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:      #FDFAF5;
+  --cream2:     #F4EFE6;
+  --green:      #1F4D3A;
+  --green2:     #2A6650;
+  --green-soft: #E8F2EC;
+  --green-mid:  #B8D4C0;
+  --gold:       #C9A96E;
+  --gold-soft:  #F6EDD8;
+  --taupe:      #8C8278;
+  --text:       #1A1A18;
+  --muted:      #5E6B62;
+  --border:     #DDD8CF;
+  --serif:      'Playfair Display', Georgia, serif;
+  --sans:       'Plus Jakarta Sans', system-ui, sans-serif;
+  
+  --hero-height: 100dvh;
+  --promo-height: 40px;
+  --promo-safe-top: env(safe-area-inset-top, 0px);
+  --promo-total: calc(var(--promo-height) + var(--promo-safe-top));
+}
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--text);
+  overflow-x:hidden;
+  padding-top: var(--promo-total); /* Offset for fixed promo bar */
+}
+
+/* --- PROMO BAR STYLES --- */
+.promo-bar {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;
+    background-color: #FDE047; color: #422006; height: var(--promo-height);
+    padding-top: var(--promo-safe-top); box-sizing: content-box; font-size: 13.5px; font-weight: 500;
+}
+.promo-container { height: 100%; max-width: 1240px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; }
+.promo-desktop { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 15px; }
+.promo-text { white-space: nowrap; }
+.promo-text a { color: #854d0e; font-weight: 600; transition: color 0.2s; text-decoration: none;}
+.promo-text a:hover { color: #a16207; }
+.promo-btn {
+    background-color: #ca8a04; color: white; padding: 5px 14px; text-decoration: none;
+    border-radius: 20px; font-size: 13px; font-weight: 600; transition: all 0.3s;
+}
+.promo-btn:hover { background-color: #a16207; transform: scale(1.05); }
+
+.promo-mobile { display: none; width: 100%; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; }
+.promo-mobile .truncate { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.promo-mobile .no-wrap { white-space: nowrap; flex-shrink: 0; }
+.promo-mobile a { color: #854d0e; font-weight: 600; flex-shrink: 0; text-decoration: none;}
+
+@media (max-width: 768px) {
+    .promo-desktop { display: none; }
+    .promo-mobile { display: flex; }
+}
+
+/* NAV */
+nav{
+  position:fixed;top:var(--promo-total);left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;
+  transition:background .35s,box-shadow .35s;
+}
+nav.solid{
+  background:rgba(253,250,245,.96);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.nav-logo img{height:32px;width:auto;transition:filter .3s}
+nav:not(.solid) .nav-logo img{filter:brightness(0) invert(1)}
+.nav-logo-text{
+  font-family:var(--serif);font-size:1.2rem;font-weight:400;
+  color:#fff;letter-spacing:.01em;transition:color .3s;
+}
+nav.solid .nav-logo-text{color:var(--text)}
+nav.solid .nav-logo img{filter:none}
+.nav-logo-text em{font-style:italic}
+
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:.85rem;font-weight:400;color:rgba(255,255,255,.82);text-decoration:none;transition:color .2s}
+nav.solid .nav-links a{color:var(--muted)}
+.nav-links a:hover,nav.solid .nav-links a:hover{color:var(--green)}
+
+.nav-actions{display:flex;align-items:center;gap:.9rem}
+.nav-phone{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.9);text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s}
+nav.solid .nav-phone{color:var(--text)}
+.nav-phone:hover{color:var(--gold)}
+.nav-btn{
+  background:rgba(255,255,255,.18);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.35);color:#fff;
+  padding:.6rem 1.4rem;border-radius:6px;
+  text-decoration:none;font-size:.85rem;font-weight:600;transition:all .2s;
+}
+nav.solid .nav-btn{background:var(--green);border-color:var(--green);color:#fff}
+.nav-btn:hover{background:var(--green);border-color:var(--green);color:#fff}
+
+/* HERO */
+.hero{
+  height:calc(var(--hero-height) - var(--promo-total));min-height:620px;
+  position:relative;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:0 2.5rem 5rem;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(to bottom,rgba(26,26,24,.1) 0%,rgba(26,26,24,.08) 35%,rgba(26,26,24,.62) 70%,rgba(26,26,24,.84) 100%),
+    url('hero.png');
+  background-size:cover;background-position:center center;
+  transition: transform 1.5s ease; /* Micro-interaction prep */
+}
+.hero:hover .hero-bg {
+  transform: scale(1.03); /* Subtle zoom on hover */
+}
+.hero-content{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:flex-end;gap:3rem;
+}
+.hero-kicker{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+.hero-kicker-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 2.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-kicker span{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(2.6rem,4.8vw,4.2rem);
+  font-weight:400;line-height:1.1;color:#fff;
+  letter-spacing:-.015em;margin-bottom:1.4rem;
+}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.72)}
+.hero-desc{font-size:.98rem;line-height:1.75;color:rgba(255,255,255,.68);font-weight:300;max-width:480px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.btn-white{background:#fff;color:var(--green);padding:.85rem 2rem;border-radius:7px;text-decoration:none;font-size:.9rem;font-weight:600;transition:opacity .2s,transform .15s}
+.btn-white:hover{opacity:.92;transform:translateY(-2px)}
+.btn-ghost-white{color:rgba(255,255,255,.88);padding:.85rem 1.6rem;border:1px solid rgba(255,255,255,.32);border-radius:7px;text-decoration:none;font-size:.9rem;font-weight:400;transition:border-color .2s,color .2s}
+.btn-ghost-white:hover{border-color:rgba(255,255,255,.7);color:#fff}
+.hero-hours-box{
+  background:rgba(255,255,255,.1);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.2);border-radius:14px;
+  padding:1.6rem 1.8rem;min-width:220px;
+}
+.hb-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:1rem}
+.hb-row{display:flex;justify-content:space-between;gap:1.5rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.8rem}
+.hb-row:last-child{border-bottom:none}
+.hb-day{color:rgba(255,255,255,.5);font-weight:300}
+.hb-time{color:rgba(255,255,255,.88);font-weight:400}
+
+/* STRIP */
+.strip{background:var(--green);padding:1.8rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.strip-text{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.8vw,1.3rem);color:rgba(255,255,255,.88)}
+.strip-phone{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;transition:opacity .2s;white-space:nowrap}
+.strip-phone:hover{opacity:.78}
+.phone-pill{background:rgba(255,255,255,.14);border-radius:100px;padding:.45rem 1.2rem;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:600}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1.1fr 1fr;min-height:580px}
+.about-img{background-size:cover;background-position:center} /* Syntax Fix */
+.about-content{padding:5rem 4rem;background:var(--cream2);display:flex;flex-direction:column;justify-content:center}
+.section-eyebrow{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:.8rem}
+.about-content h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;line-height:1.2;color:var(--text);letter-spacing:-.015em;margin-bottom:1.1rem}
+.about-content h2 em{font-style:italic;color:var(--green)}
+.about-content p{font-size:.93rem;line-height:1.78;color:var(--muted);font-weight:300;margin-bottom:.85rem}
+.pillars{display:flex;flex-direction:column;margin-top:1.2rem}
+.pillar{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.pillar:first-child{border-top:1px solid var(--border)}
+.pillar-marker{width:22px;height:22px;border-radius:50%;background:var(--green-soft);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.pillar-marker svg{width:10px;height:10px;color:var(--green)}
+.pillar h4{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.15rem}
+.pillar p{font-size:.8rem;color:var(--muted);line-height:1.55;font-weight:300}
+
+/* SERVICES */
+.services{padding:6rem 2.5rem;background:var(--cream)}
+.services-top{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+.services-top h2{font-family:var(--serif);font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:400;color:var(--text);letter-spacing:-.015em;line-height:1.15}
+.services-top h2 em{font-style:italic;color:var(--green)}
+.services-top p{max-width:300px;font-size:.88rem;color:var(--muted);line-height:1.65;font-weight:300;text-align:right}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:14px;overflow:hidden;gap:1px;background:var(--border)}
+.svc{background:var(--cream);padding:2rem 1.8rem;transition:background .25s, transform .25s; cursor:default}
+.svc:hover{background:var(--green-soft); transform: translateY(-4px);} /* Micro-interaction lift */
+.svc-num{font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--green);opacity:.55;margin-bottom:1rem}
+.svc-name{font-family:var(--serif);font-size:1.12rem;color:var(--text);margin-bottom:.45rem;line-height:1.3}
+.svc-desc{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* TEAM */
+.team{padding:6rem 2.5rem;background:var(--cream2)}
+.team-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+.team-header h2{font-family:var(--serif);font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:400;color:var(--text);letter-spacing:-.015em;line-height:1.15}
+.team-header h2 em{font-style:italic;color:var(--green)}
+.team-header p{max-width:280px;font-size:.88rem;color:var(--muted);line-height:1.65;font-weight:300;text-align:right}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.team-card{background:var(--cream);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(31,77,58,.1)} /* Lift effect */
+.team-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block}
+.team-info{padding:1.4rem 1.6rem 1.6rem}
+.team-name{font-family:var(--serif);font-size:1.2rem;color:var(--text);margin-bottom:.2rem;font-weight:400}
+.team-role{font-size:.77rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
+.team-bio{font-size:.82rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:1fr 1fr 1fr;height:320px;gap:3px;background:#000}
+.gallery-item{background-size:cover;background-position:center;transition:opacity .3s}
+.gallery-item:hover{opacity:.88}
+
+/* EMERGENCY */
+.emergency-banner{background:var(--green);padding:3.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+.emg-text .emg-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.emg-text h2{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:400;color:#fff;line-height:1.25}
+.emg-text h2 em{font-style:italic;color:rgba(255,255,255,.65)}
+.emg-text p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.6;font-weight:300;margin-top:.5rem;max-width:500px}
+.emg-cta{display:flex;align-items:center;gap:.9rem;background:#fff;color:var(--green);padding:1rem 1.8rem;border-radius:10px;text-decoration:none;font-size:1.25rem;font-weight:700;font-family:var(--serif);transition:transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,.15);white-space:nowrap;flex-shrink:0}
+.emg-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.2)}
+
+/* BOOKING */
+.booking{padding:6rem 2.5rem;background:var(--gold-soft);display:grid;grid-template-columns:1fr 1.15fr;gap:5rem;align-items:start}
+.booking-left h2{font-family:var(--serif);font-size:clamp(1.9rem,3vw,2.5rem);font-weight:400;color:var(--text);letter-spacing:-.015em;line-height:1.2;margin-bottom:1rem}
+.booking-left h2 em{font-style:italic;color:var(--green)}
+.booking-left > p{font-size:.93rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:2rem}
+
+.booking-hours{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.8rem;margin-bottom:2rem}
+.booking-hours-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:1rem}
+.bh-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.87rem}
+.bh-row:last-child{border-bottom:none}
+.bh-day{color:var(--muted);font-weight:300}
+.bh-time{font-weight:500;color:var(--text)}
+.bh-closed{color:#c5c0b8;font-weight:300}
+.bh-badge{display:inline-block;background:var(--green-soft);color:var(--green);font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .55rem;border-radius:100px;margin-left:.5rem}
+
+.cinfo-list{display:flex;flex-direction:column;gap:1.2rem}
+.cinfo{display:flex;gap:.9rem;align-items:flex-start}
+.cinfo-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;background:var(--green-soft);border:1px solid var(--green-mid);display:flex;align-items:center;justify-content:center;color:var(--green)}
+.cinfo-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.2rem}
+.cinfo-value{font-size:.88rem;color:var(--text);line-height:1.5}
+.cinfo-value a{color:var(--green);text-decoration:none;font-weight:500}
+
+.booking-form{background:#fff;border:1px solid var(--border);border-radius:16px;padding:2.5rem;box-shadow:0 6px 40px rgba(31,77,58,.07)}
+.form-title{font-family:var(--serif);font-size:1.25rem;color:var(--text);margin-bottom:.25rem}
+.form-sub{font-size:.8rem;color:var(--muted);font-weight:300;margin-bottom:1.8rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg{margin-bottom:.9rem}
+.fg label{display:block;font-size:.75rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:.88rem;color:var(--text);background:#fff;outline:none;appearance:none;transition:border-color .2s,box-shadow .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,77,58,.09)}
+.fg input::placeholder,.fg textarea::placeholder{color:#c0c9c2}
+.fg textarea{resize:vertical;min-height:88px}
+.form-btn{width:100%;padding:.9rem;border-radius:8px;border:none;background:var(--green);color:#fff;font-family:var(--sans);font-size:.92rem;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;margin-top:.3rem}
+.form-btn:hover{background:var(--green2);transform:translateY(-1px)}
+.form-gdpr{font-size:.72rem;color:var(--taupe);text-align:center;margin-top:.7rem;font-weight:300}
+
+/* FOOTER */
+footer{background:var(--text);padding:4rem 2.5rem 2rem; position: relative;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+.footer-logo-wrap{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-bottom:.9rem}
+.footer-logo-wrap img{height:32px;width:auto;filter:brightness(0) invert(1);opacity:.85}
+.footer-logo-wrap span{font-family:var(--serif);font-size:1.2rem;color:#fff;letter-spacing:.01em}
+.footer-logo-wrap span em{font-style:italic;color:rgba(255,255,255,.5)}
+.footer-desc{font-size:.83rem;color:rgba(255,255,255,.38);line-height:1.7;font-weight:300;max-width:230px}
+.footer-col h4{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:1.1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col a{font-size:.85rem;color:rgba(255,255,255,.48);text-decoration:none;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.76rem;color:rgba(255,255,255,.2);font-weight:300}
+
+/* Agency Footer Credit */
+.agency-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.agency-credit:hover { opacity: 0.8; }
+.agency-credit img { height: 16px; opacity: 0.6; filter: brightness(0) invert(1); }
+
+/* --- BUTONUL DE MENIU (Ascuns pe PC) --- */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.2rem;
+  transition: color 0.3s;
+}
+nav.solid .mobile-menu-btn {
+  color: var(--text);
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .about{grid-template-columns:1fr}
+  .about-img{height:380px}
+  .about-content{padding:3.5rem 2rem}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .booking{grid-template-columns:1fr;gap:3rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .mobile-menu-btn { display: block; order: 2; }
+  .nav-actions { display: none; }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.35s ease-in-out;
+  }
+  .nav-links.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .nav-links a { color: var(--text); font-size: 1.15rem; font-weight: 500; }
+  nav.solid .nav-links a { color: var(--text); }
+  
+  /* Mobile Image Focus Fixes */
+  .hero-bg { 
+    background-position: center center;
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(26, 26, 24, 0.1) 0%,
+        rgba(26, 26, 24, 0.35) 25%,
+        rgba(26, 26, 24, 0.8) 50%,
+        rgba(26, 26, 24, 1) 100%
+      ),
+      url('herom.jpg');
+  }
+  .about-img { background-position: 85% center; }
+  
+  .hero{padding:0 1.5rem 3.5rem}
+  .hero-content{grid-template-columns:1fr}
+  .hero-hours-box{display:none}
+  .services,.team,.booking{padding:4rem 1.5rem}
+  
+  /* Typography Alignment Fix */
+  .team-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .team-header p {
+    text-align: left;
+    max-width: 100%;
+  }
+  .team-header + p {
+    text-align: left;
+  }
+
+  /* Mobile Carousels */
+  .services-grid, .team-grid {
+    display: flex;
+    overflow-x: auto;
+    transform: translateZ(0);
+    max-width: 100vw;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border: none;
+    background: transparent;
+  }
+  .services-grid::-webkit-scrollbar, .team-grid::-webkit-scrollbar { display: none; }
+  .svc, .team-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .dot.active {
+    background: var(--green);
+    transform: scale(1.3);
+  }
+  
+  /* Gallery Gap Fix */
+  .gallery{grid-template-columns:1fr 1fr;height:auto}
+  .gallery-item{height:180px}
+  .gallery-item:nth-child(3) { display: none; }
+
+  .emergency-banner{flex-direction:column;align-items:flex-start;padding:3rem 1.5rem}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  footer{padding:3rem 1.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="promo-bar">
+    <div class="promo-container">
+        <div class="promo-desktop">
+            <span class="promo-text">
+                Concept demo • Conținut orientativ • Dezvoltat de sky.ro •
+                <a href="mailto:dan.trifan@sky.ro">dan.trifan@sky.ro</a> •
+                <a href="tel:+40720088880">+4 0720 088 880</a>
+            </span>
+            <a href="https://wa.me/40720088880" target="_blank" rel="noopener noreferrer" class="promo-btn">WhatsApp</a>
+        </div>
+        <div class="promo-mobile">
+            <div class="truncate">Concept demo</div>
+            <div class="no-wrap">Dezvoltat de sky.ro</div>
+            <a href="tel:+40720088880">+4 0720 088 880</a>
+        </div>
+    </div>
+</div>
+
+<nav id="nav" data-aos="fade-down" data-aos-duration="800">
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Logo HopeDent">
+    <span class="nav-logo-text">Hope<em>Dent</em></span>
+  </a>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+
+  <div class="nav-links">
+    <a href="#about">Despre noi</a>
+    <a href="#services">Servicii</a>
+    <a href="#team">Echipa</a>
+    <a href="#booking">Programări</a>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-phone" href="tel:0734872962">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.19 2 2 0 012.08 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.3 8.66a16 16 0 006 6l1.02-1.02a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      0734 872 962
+    </a>
+    <a class="nav-btn" href="#booking">Programează-te</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div data-aos="fade-up" data-aos-duration="1000">
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
+        <span>Clinică stomatologică · Comarnic, Prahova</span>
+      </div>
+      <h1>Îngrijire dentară<br>în care poți avea<br><em>deplină încredere.</em></h1>
+      <p class="hero-desc">Medici specialiști, aparatură modernă și un spațiu primitor pentru tine și toată familia ta. Plată în rate, fără dobândă.</p>
+      <div class="hero-btns">
+        <a class="btn-white" href="#booking">Programare online</a>
+        <a class="btn-ghost-white" href="tel:0734872962">0734 872 962</a>
+      </div>
+    </div>
+    <div class="hero-hours-box" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
+      <div class="hb-label">Program clinic</div>
+      <div class="hb-row"><span class="hb-day">Luni, Mie, Vin</span><span class="hb-time">09:00–16:00</span></div>
+      <div class="hb-row"><span class="hb-day">Marți, Joi</span><span class="hb-time">13:00–20:00</span></div>
+      <div class="hb-row"><span class="hb-day">Sâm – Dum</span><span class="hb-time" style="color:rgba(255,255,255,.35)">Închis</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" data-aos="fade-up">
+  <p class="strip-text">"Calitate superioară a serviciilor, la prețuri accesibile pentru toată familia."</p>
+  <a class="strip-phone" href="tel:0734872962">
+    <span class="phone-pill">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.19 2 2 0 012.08 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.3 8.66a16 16 0 006 6l1.02-1.02a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      0734 872 962
+    </span>
+  </a>
+</div>
+
+<section class="about" id="about">
+  <div class="about-img" style="background-image:url('about.webp')" data-aos="fade-right" data-aos-duration="1000"></div>
+  <div class="about-content" data-aos="fade-left" data-aos-duration="1000">
+    <div class="section-eyebrow">Despre HopeDent</div>
+    <h2>Un cabinet stomatologic<br>în care te simți <em>acasă</em></h2>
+    <p>La HopeDent ne-am propus să schimbăm modul în care pacienții percep vizita la dentist. Ne-am construit un spațiu primitor, modern și echipat cu aparatură de ultimă generație.</p>
+    <p>De la consultații de rutină la tratamente complexe, suntem alături de tine cu răbdare și profesionalism.</p>
+    <div class="pillars">
+      <div class="pillar" data-aos="fade-up" data-aos-delay="100">
+        <div class="pillar-marker"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <div><h4>Medici specialiști de excepție</h4><p>Parteneri cu vastă experiență și formare continuă în domeniu.</p></div>
+      </div>
+      <div class="pillar" data-aos="fade-up" data-aos-delay="200">
+        <div class="pillar-marker"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <div><h4>Aparatură medicală ultramodernă</h4><p>Echipamente noi pentru diagnostic și tratamente precise.</p></div>
+      </div>
+      <div class="pillar" data-aos="fade-up" data-aos-delay="300">
+        <div class="pillar-marker"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <div><h4>Rate fără dobândă</h4><p>Tratamente accesibile cu opțiuni flexibile de plată pentru orice buget.</p></div>
+      </div>
+      <div class="pillar" data-aos="fade-up" data-aos-delay="400">
+        <div class="pillar-marker"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <div><h4>Tratăm și iubim copiii</h4><p>Mediu calm și prietenos, vizita la dentist devine o experiență bună.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-top" data-aos="fade-up">
+    <h2>Tot ce are nevoie<br><em>familia ta</em></h2>
+    <p>8 departamente specializate, toate disponibile în clinica noastră din Comarnic.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc" data-aos="fade-up" data-aos-delay="100"><div class="svc-num">01</div><div class="svc-name">Stomatologie generală</div><div class="svc-desc">Consultații, igienizare profesională, obturații și tratamente preventive.</div></div>
+    <div class="svc" data-aos="fade-up" data-aos-delay="200"><div class="svc-num">02</div><div class="svc-name">Implantologie</div><div class="svc-desc">Implanturi dentare de calitate superioară, pentru un zâmbet complet și natural.</div></div>
+    <div class="svc" data-aos="fade-up" data-aos-delay="300"><div class="svc-num">03</div><div class="svc-name">Estetică dentară</div><div class="svc-desc">Albire profesională, fațete ceramice și corectări estetice de precizie.</div></div>
+    <div class="svc" data-aos="fade-up" data-aos-delay="400"><div class="svc-num">04</div><div class="svc-name">Ortodonție</div><div class="svc-desc">Aparate fixe, mobile și aliniere invizibilă pentru adulți și copii.</div></div>
+    <div class="svc" data-aos="fade-up" data-aos-delay="100"><div class="svc-num">05</div><div class="svc-name">Pedodonție</div><div class="svc-desc">Stomatologie pediatrică specializată, cu răbdare și grijă pentru cei mici.</div></div>
+    <div class="svc" data-aos="fade-up" data-aos-delay="200"><div class="svc-num">06</div><div class="svc-name">Protetică</div><div class="svc-desc">Coroane, punți și lucrări protetice din materiale biocompatibile de top.</div></div>
+    <div class="svc" data-aos="fade-up" data-aos-delay="300"><div class="svc-num">07</div><div class="svc-name">Parodontologie</div><div class="svc-desc">Tratamente specializate ale gingiei și structurilor de susținere.</div></div>
+    <div class="svc" data-aos="fade-up" data-aos-delay="400"><div class="svc-num">08</div><div class="svc-name">Chirurgie dentară</div><div class="svc-desc">Extracții și intervenții complexe în condiții de siguranță și confort maxim.</div></div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="team-header" data-aos="fade-up">
+    <h2>Echipa noastră<br><em>de specialiști</em></h2>
+    <p>Medici cu experiență și pasiune, dedicați fiecărui pacient în parte.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card" data-aos="fade-up" data-aos-delay="150">
+      <img class="team-photo" src="daniela.webp" alt="Dr. Daniela Văduva">
+      <div class="team-info">
+        <div class="team-name">Dr. Daniela Văduva</div>
+        <div class="team-role">Medic dentist generalist</div>
+        <div class="team-bio">Absolventă a Facultății de Medicină Dentară, București, promoția 2017. Medic empatic și cu răbdare, va fi sprijinul părinților în procesul de adaptare al copiilor la medicul dentist.</div>
+      </div>
+    </div>
+    <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+      <img class="team-photo" src="Laura.jpeg.webp" alt="Dr. Laura Florina Badiu">
+      <div class="team-info">
+        <div class="team-name">Dr. Laura Florina Badiu</div>
+        <div class="team-role">Medic specialist parodontolog</div>
+        <div class="team-bio">Cu o pregătire solidă și o experiență vastă în domeniul stomatologiei. În octombrie 2023 a obținut titlul de medic specialist în parodontologie.</div>
+      </div>
+    </div>
+    <div class="team-card" data-aos="fade-up" data-aos-delay="450">
+      <img class="team-photo" src="Untitled.jpeg.webp" alt="Dr. Badiu Teodora">
+      <div class="team-info">
+        <div class="team-name">Dr. Badiu Teodora</div>
+        <div class="team-role">Medic specialist Chirurgie Dento-Alveolară</div>
+        <div class="team-bio">Medic specialist Chirurgie Dento-Alveolară – Cluj Napoca, 2023. A absolvit UMF Carol Davila București în 2019.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery" data-aos="zoom-in" data-aos-duration="1000">
+  <div class="gallery-item" style="background-image:url('galerie1.webp')"></div>
+  <div class="gallery-item" style="background-image:url('galerie2.webp')"></div>
+  <div class="gallery-item" style="background-image:url('galerie3.jpg')"></div>
+</div>
+
+<div class="emergency-banner" data-aos="fade-up">
+  <div class="emg-text">
+    <div class="emg-label">Urgențe stomatologice</div>
+    <h2>Durere de dinți?<br><em>Nu așteptați.</em></h2>
+    <p>Contactați-ne imediat pentru o consultație urgentă. Servim pacienți din Comarnic, Câmpina, Breaza, Sinaia, Bușteni și Predeal.</p>
+  </div>
+  <a class="emg-cta" href="tel:0734872962">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.19 2 2 0 012.08 1h3a2 2 0 012.08 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.3 8.66a16 16 0 006 6l1.02-1.02a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    0734 872 962
+  </a>
+</div>
+
+<section class="booking" id="booking">
+  <div class="booking-left" data-aos="fade-right">
+    <div class="section-eyebrow">Programare</div>
+    <h2>Rezervați o<br><em>consultație</em></h2>
+    <p>Completați formularul sau sunați direct. Vă confirmăm programarea cât mai repede.</p>
+
+    <div class="booking-hours">
+      <div class="booking-hours-label">Program clinic</div>
+      <div class="bh-row">
+        <span class="bh-day">Luni, Miercuri, Vineri</span>
+        <span class="bh-time">09:00–16:00 <span class="bh-badge">Deschis</span></span>
+      </div>
+      <div class="bh-row">
+        <span class="bh-day">Marți, Joi</span>
+        <span class="bh-time">13:00–20:00 <span class="bh-badge">Deschis</span></span>
+      </div>
+      <div class="bh-row">
+        <span class="bh-day">Sâmbătă – Duminică</span>
+        <span class="bh-closed">Închis</span>
+      </div>
+    </div>
+
+    <div class="cinfo-list">
+      <div class="cinfo">
+        <div class="cinfo-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="cinfo-label">Adresă</div><div class="cinfo-value">Str. Republicii nr. 25, Comarnic<br>jud. Prahova</div></div>
+      </div>
+      <div class="cinfo">
+        <div class="cinfo-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.19 2 2 0 012.08 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.3 8.66a16 16 0 006 6l1.02-1.02a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="cinfo-label">Telefon</div><div class="cinfo-value"><a href="tel:0734872962">0734 872 962</a></div></div>
+      </div>
+      <div class="cinfo">
+        <div class="cinfo-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div><div class="cinfo-label">Localități apropiate</div><div class="cinfo-value">Câmpina · Breaza · Sinaia · Bușteni · Predeal</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="booking-form" data-aos="fade-left" data-aos-delay="200">
+    <div class="form-title">Cerere de programare</div>
+    <div class="form-sub">Vă răspundem în cel mai scurt timp</div>
+    <div class="form-row">
+      <div class="fg"><label>Prenume</label><input type="text" placeholder="Ion"></div>
+      <div class="fg"><label>Nume</label><input type="text" placeholder="Popescu"></div>
+    </div>
+    <div class="fg"><label>Telefon</label><input type="tel" placeholder="07xx xxx xxx"></div>
+    <div class="fg">
+      <label>Departament</label>
+      <select>
+        <option value="">— Selectați —</option>
+        <option>Stomatologie generală</option>
+        <option>Implantologie</option>
+        <option>Estetică dentară</option>
+        <option>Ortodonție</option>
+        <option>Pedodonție</option>
+        <option>Protetică</option>
+        <option>Parodontologie</option>
+        <option>Chirurgie dentară</option>
+      </select>
+    </div>
+    <div class="fg"><label>Data preferată</label><input type="date"></div>
+    <div class="fg"><label>Mesaj (opțional)</label><textarea placeholder="Descrieți pe scurt motivul vizitei…"></textarea></div>
+    <button class="form-btn" onclick="this.textContent='✓ Cerere trimisă!';this.disabled=true;this.style.background='#2A6650'">Trimite cererea</button>
+    <p class="form-gdpr">Datele dvs. sunt confidențiale, conform GDPR.</p>
+  </div>
+</section>
+
+<a href="https://wa.me/40720088880" target="_blank" rel="noopener noreferrer" aria-label="Chat pe WhatsApp" style="position: fixed; bottom: 24px; right: 24px; z-index: 50; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background-color: #25D366; color: white; border-radius: 9999px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); transition: all 0.3s;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+</a>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="footer-logo-wrap">
+        <img src="logo.png" alt="Logo Footer">
+        <span>Hope<em>Dent</em></span>
+      </a>
+      <p class="footer-desc">Clinică stomatologică modernă în Comarnic, dedicată sănătății și zâmbetului dumneavoastră și al familiei.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicii</h4>
+      <ul>
+        <li><a href="#">Stomatologie generală</a></li>
+        <li><a href="#">Implantologie</a></li>
+        <li><a href="#">Estetică dentară</a></li>
+        <li><a href="#">Ortodonție</a></li>
+        <li><a href="#">Pedodonție</a></li>
+        <li><a href="#">Protetică</a></li>
+        <li><a href="#">Parodontologie</a></li>
+        <li><a href="#">Chirurgie</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Clinica</h4>
+      <ul>
+        <li><a href="#">Acasă</a></li>
+        <li><a href="#">Despre noi</a></li>
+        <li><a href="#">Echipa</a></li>
+        <li><a href="#">Galerie</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0734872962">0734 872 962</a></li>
+        <li><a href="#">Str. Republicii 25</a></li>
+        <li><a href="#">Comarnic, Prahova</a></li>
+        <li style="margin-top:.5rem"><a href="#">Politică GDPR</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 HopeDent. Toate drepturile rezervate.</p>
+    <p>Comarnic, jud. Prahova</p>
+  </div>
+  
+  <a href="https://sky.ro" target="_blank" class="agency-credit">
+    Crafted in the clouds by <img src="skyro.png" alt="sky.ro logo">
+  </a>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// Initialize AOS Animations
+AOS.init({
+  once: true, // whether animation should happen only once - while scrolling down
+  offset: 50, // offset (in px) from the original trigger point
+});
+
+// Navbar Solid Logic
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 50);
+}, {passive:true});
+
+// Mobile Menu Logic
+const mobileBtn = document.getElementById('mobileMenuBtn');
+const navLinksMenu = document.querySelector('.nav-links');
+
+mobileBtn.addEventListener('click', () => {
+  navLinksMenu.classList.toggle('active');
+});
+
+const allLinks = document.querySelectorAll('.nav-links a');
+allLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinksMenu.classList.remove('active');
+  });
+});
+
+// Mobile Carousel Pagination Logic
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth <= 768) {
+    const sliders = document.querySelectorAll('.services-grid, .team-grid');
+    
+    sliders.forEach(slider => {
+      const dotsContainer = document.createElement('div');
+      dotsContainer.className = 'slider-dots';
+      
+      const items = slider.children;
+      const dots = [];
+      
+      Array.from(items).forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = index === 0 ? 'dot active' : 'dot';
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      });
+      
+      slider.parentNode.insertBefore(dotsContainer, slider.nextSibling);
+      
+      slider.addEventListener('scroll', () => {
+        const scrollLeft = slider.scrollLeft;
+        const itemWidth = slider.clientWidth;
+        const currentIndex = Math.round(scrollLeft / itemWidth);
+        
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }, { passive: true });
+    });
+  }
+});
+</script>
+</body>
+</html>

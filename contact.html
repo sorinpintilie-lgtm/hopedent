@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact și programare — Clinică Stomatologică HopeDent Comarnic</title>
+  <meta name="description" content="Contact și programare HopeDent - clinică stomatologică în Comarnic. Sună la 0734 872 962 sau trimite o cerere de programare online.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="inner-page contact-page">
+
+  <div id="site-header"></div>
+
+  <main class="page-main">
+
+    <!-- HERO INTERIOR -->
+    <section class="page-hero">
+      <div class="page-hero--inner">
+        <div class="site-container">
+          <div class="page-hero__content">
+            <span class="section-eyebrow">Contact HopeDent</span>
+
+            <h1>Programează o vizită la HopeDent</h1>
+
+            <p>
+              Ne găsești pe Strada Republicii nr. 25, în Comarnic. Pentru programări, informații sau situații care nu pot fi amânate, ne poți contacta telefonic sau poți trimite o cerere prin formular.
+            </p>
+
+            <div class="section-actions">
+              <a class="btn-white" href="tel:0734872962">Sună la 0734 872 962</a>
+              <a class="btn-ghost" href="#formular-programare">Completează formularul</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT RAPID -->
+    <section class="page-section contact-overview-section audience-home audience-home--equal">
+      <div class="site-container">
+        <div class="audience-home-grid">
+          <div class="audience-home-intro">
+            <span class="section-eyebrow">Date de contact</span>
+            <h2>Ai nevoie de o programare sau de informații?</h2>
+            <p class="home-subtitle">
+              Pentru consultații, urgențe stomatologice sau întrebări despre tratamente, cel mai rapid mod de contact este telefonic. Pentru cereri obișnuite de programare, poți folosi și formularul de mai jos.
+            </p>
+          </div>
+
+          <div class="audience-cards">
+            <article class="audience-card audience-card--white">
+              <h3>Telefon</h3>
+              <p><a href="tel:0734872962">0734 872 962</a></p>
+            </article>
+
+            <article class="audience-card audience-card--white">
+              <h3>Adresă</h3>
+              <p>Strada Republicii nr. 25, Comarnic, jud. Prahova</p>
+            </article>
+
+            <article class="audience-card audience-card--wide audience-card--white">
+              <h3>Programări</h3>
+              <p>Cerere online sau telefonic. Programarea este confirmată după contactul cu clinica.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULAR + SIDEBAR -->
+    <section id="formular-programare" class="page-section page-section--muted">
+      <div class="site-container">
+        <div class="booking-main-grid contact-booking-grid">
+
+          <!-- FORMULAR -->
+          <div class="booking-form-section">
+            <div class="section-heading">
+              <div>
+                <span class="section-eyebrow">Cerere de programare</span>
+                <h2>Trimite o cerere pentru consultație</h2>
+                <p class="home-subtitle">
+                  Completează datele de mai jos, iar echipa HopeDent te va contacta pentru confirmare. Pentru urgențe sau dureri care nu pot aștepta, recomandăm apelul telefonic.
+                </p>
+              </div>
+            </div>
+
+            <form class="booking-form contact-form" id="bookingForm">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="prenume">Prenume</label>
+                  <input type="text" id="prenume" name="prenume" placeholder="Prenumele tău" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="nume">Nume</label>
+                  <input type="text" id="nume" name="nume" placeholder="Numele tău" required>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" name="telefon" placeholder="07xx xxx xxx" required>
+              </div>
+
+              <div class="form-field">
+                <label for="specialitate">Tratament / specialitate dorită</label>
+                <select id="specialitate" name="specialitate" required>
+                  <option value="">— Selectează —</option>
+                  <option value="stomatologie-generala">Stomatologie generală</option>
+                  <option value="pedodontie">Pedodonție</option>
+                  <option value="implantologie">Implantologie</option>
+                  <option value="estetica-dentara">Estetică dentară</option>
+                  <option value="ortodontie">Ortodonție</option>
+                  <option value="protetica">Protetică</option>
+                  <option value="parodontologie">Parodontologie</option>
+                  <option value="chirurgie-dentara">Chirurgie dentară</option>
+                  <option value="urgenta">Urgență stomatologică</option>
+                  <option value="nu-stiu">Nu știu exact</option>
+                </select>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="data-preferata">Data preferată</label>
+                  <input type="date" id="data-preferata" name="data-preferata">
+                </div>
+
+                <div class="form-field">
+                  <label for="interval">Interval preferat</label>
+                  <select id="interval" name="interval">
+                    <option value="">— Selectează —</option>
+                    <option value="dimineata">Dimineață</option>
+                    <option value="dupa-amiaza">După-amiază</option>
+                    <option value="oricand">Oricând în program</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="mesaj">Mesaj</label>
+                <textarea id="mesaj" name="mesaj" rows="4" placeholder="Scrie pe scurt motivul vizitei. Te rugăm să nu trimiți informații medicale detaliate prin formular."></textarea>
+              </div>
+
+              <div class="form-field form-field--checkbox">
+                <label for="gdpr-consent" class="checkbox-label">
+                  <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required>
+                  <span class="checkmark" aria-hidden="true"></span>
+                  <span class="checkbox-text">
+                    Sunt de acord ca datele mele să fie folosite pentru a fi contactat în legătură cu această solicitare.
+                  </span>
+                </label>
+              </div>
+
+              <button class="btn-dark form-submit" type="submit" id="bookingSubmitBtn">Trimite</button>
+            </form>
+
+            <div class="form-note">
+              <p>Trimiterea formularului nu reprezintă confirmarea automată a programării. Echipa clinicii te va contacta pentru confirmare.</p>
+            </div>
+
+            <div id="bookingMessage" class="form-message" style="display: none;"></div>
+          </div>
+
+           <!-- SIDEBAR -->
+           <aside class="booking-sidebar contact-sidebar" style="position: sticky; top: 5rem;">
+             <div class="sidebar-card sidebar-card--highlight" style="padding-bottom: 0;">
+              <h3>Preferi să ne suni?</h3>
+              <p>
+                Pentru programări rapide, dureri dentare sau situații care nu pot fi amânate, cel mai simplu este să ne contactezi telefonic în timpul programului clinicii.
+              </p>
+
+               <div class="contact-address" style="padding-bottom: 1rem;">
+                 <strong>Adresă:</strong> Strada Republicii nr. 25, Comarnic, jud. Prahova
+               </div>
+
+               <div class="contact-highlight">
+                 <a class="btn-dark btn-small" href="tel:0734872962" style="display: flex; align-items: center; gap: 0.35rem;">
+                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.19 2 2 0 012.08 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.3 8.66a16 16 0 006 6l1.02-1.02a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+                   </svg>
+                   0734 872 962
+                 </a>
+               </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Program clinică</h3>
+
+               <div class="schedule-compact">
+                 <div class="schedule-row">
+                   <span class="schedule-day">Luni, Miercuri, Vineri</span>
+                   <span class="schedule-hours">09:00–16:00</span>
+                 </div>
+
+                 <div class="schedule-row">
+                   <span class="schedule-day">Marți, Joi</span>
+                   <span class="schedule-hours">13:00–20:00</span>
+                 </div>
+
+                 <div class="schedule-row schedule-row--closed">
+                   <span class="schedule-day">Sâmbătă, Duminică</span>
+                   <span class="schedule-hours">Închis</span>
+                 </div>
+               </div>
+
+              <p class="schedule-note">Pentru disponibilitate exactă, programarea este confirmată telefonic de echipa clinicii.</p>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ADRESĂ ȘI HARTĂ -->
+    <section class="page-section">
+      <div class="site-container">
+        <div class="page-grid page-grid--content contact-location-grid">
+          <div>
+            <span class="section-eyebrow">Unde ne găsești</span>
+
+            <h2>Clinica HopeDent este ușor de găsit în Comarnic</h2>
+
+            <p>
+              Clinica este poziționată într-o locație centrală și accesibilă, vizavi de Dispensar, cu acces la parcare, pe partea cu Parcul central, între Kaufland Comarnic și Oficiul Poștal Comarnic.
+            </p>
+
+            <p>
+              Poți ajunge la clinică cu mașina, trenul sau maxi-taxi. Pentru transportul local, reperele utile sunt stațiile de la Primărie sau de la Piață.
+            </p>
+
+            <ul class="location-list">
+              <li>Strada Republicii nr. 25, Comarnic</li>
+              <li>Vizavi de Dispensar</li>
+              <li>Pe partea cu Parcul central</li>
+              <li>Între Kaufland Comarnic și Oficiul Poștal Comarnic</li>
+              <li>Aproape de gara Comarnic</li>
+              <li>Acces la parcare</li>
+            </ul>
+          </div>
+
+          <div class="contact-map-card">
+            <div class="contact-map contact-map--large">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1110.8856499687631!2d25.63519179297742!3d45.238842753611955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b305aa3733aa83%3A0xcdf68056509f98cc!2sDANIELA%20HOPEDENT%20S.R.L.!5e1!3m2!1sen!2sro!4v1777540182246!5m2!1sen!2sro"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Harta HopeDent Comarnic">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUM FUNCȚIONEAZĂ -->
+    <section class="page-section page-section--accent audience-home audience-home--equal">
+      <div class="site-container">
+        <div class="audience-home-grid">
+          <div class="audience-home-intro">
+            <span class="section-eyebrow">Cum funcționează</span>
+            <h2>Trei pași simpli până la consultație</h2>
+            <p class="home-subtitle">
+              Am păstrat procesul cât mai simplu, astfel încât să poți cere rapid o programare și să primești îndrumarea potrivită.
+            </p>
+          </div>
+
+          <div class="audience-cards">
+            <article class="audience-card audience-card--white">
+              <h3>Trimiți cererea</h3>
+              <p>Completezi formularul cu datele de contact și motivul vizitei.</p>
+            </article>
+
+            <article class="audience-card audience-card--white">
+              <h3>Te contactăm</h3>
+              <p>Echipa clinicii îți confirmă disponibilitatea și stabilește ora potrivită.</p>
+            </article>
+
+            <article class="audience-card audience-card--wide audience-card--white">
+              <h3>Vii la consultație</h3>
+              <p>Te așteptăm la clinică pentru evaluarea și tratamentul potrivit.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="page-section">
+      <div class="site-container">
+        <div class="section-heading section-heading--centered">
+          <div>
+            <span class="section-eyebrow">Întrebări frecvente</span>
+            <h2>Întrebări utile înainte de programare</h2>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>Pot trimite o cerere dacă nu știu ce tratament mi se potrivește?</h3>
+            <p>Da. Poți selecta opțiunea „Nu știu exact”, iar medicul îți va recomanda pașii potriviți după consultație.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Pentru urgențe este suficient formularul?</h3>
+            <p>Pentru dureri sau situații care nu pot aștepta, recomandăm să suni direct la 0734 872 962.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Programarea este confirmată automat?</h3>
+            <p>Nu. Cererea trimisă prin formular trebuie confirmată telefonic de echipa clinicii.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/booking-form.js"></script>
+</body>
+</html>
