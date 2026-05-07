@@ -339,6 +339,44 @@ textarea {
   padding: 0.5rem 0;
 }
 
+.nav-dropdown-toggle {
+  position: relative;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0;
+}
+
+#nav.solid .nav-dropdown-toggle,
+.inner-page #nav .nav-dropdown-toggle,
+#nav.nav-always-solid .nav-dropdown-toggle {
+  color: var(--muted);
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle:focus {
+  color: var(--green) !important;
+}
+
+.nav-dropdown-toggle.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.72;
+}
+
 .nav-dropdown-menu {
   position: absolute;
   top: calc(100% + 0.4rem);

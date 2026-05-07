@@ -1,0 +1,24 @@
+# Netlify redirects for clean URLs (remove .html extension)
+# Main pages
+/despre-noi /despre-noi.html 200
+/tratamente /tratamente.html 200
+/echipa /echipa.html 200
+/galerie /galerie.html 200
+/blog /blog.html 200
+/contact /contact.html 200
+
+# Policy pages
+/termeni-si-conditii /termeni-si-conditii.html 200
+/politica-gdpr /politica-gdpr.html 200
+/politica-cookies /politica-cookies.html 200
+
+# Specialties
+/specialitati/stomatologie-generala /specialitati/stomatologie-generala.html 200
+/specialitati/pedodontie /specialitati/pedodontie.html 200
+/specialitati/implantologie /specialitati/implantologie.html 200
+/specialitati/estetica-dentara /specialitati/estetica-dentara.html 200
+/specialitati/ortodontie /specialitati/ortodontie.html 200
+/specialitati/protetica /specialitati/protetica.html 200
+/specialitati/parodontologie /specialitati/parodontologie.html 200
+/specialitati/chirurgie-dentara /specialitati/chirurgie-dentara.html 200
+
