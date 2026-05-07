@@ -191,6 +191,7 @@ function getRouteKey(path) {
 function initMobileMenu(nav) {
   const mobileBtn = nav.querySelector('#mobileMenuBtn');
   const navLinks = nav.querySelector('.nav-links');
+  const dropdowns = nav.querySelectorAll('.nav-dropdown');
 
   if (!mobileBtn || !navLinks) return;
 
@@ -203,22 +204,72 @@ function initMobileMenu(nav) {
 
   const backdrop = getOrCreateMenuBackdrop();
 
+  const closeDropdowns = () => {
+    dropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+
+      dropdown.classList.remove('is-open');
+
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+
   const setOpenState = (isOpen) => {
     nav.classList.toggle('is-open', isOpen);
     navLinks.classList.toggle('active', isOpen);
     document.body.classList.toggle('nav-open', isOpen);
     mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+    if (!isOpen) {
+      closeDropdowns();
+    }
   };
 
-  mobileBtn.addEventListener('click', () => {
+  mobileBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     setOpenState(!nav.classList.contains('is-open'));
   });
 
-  navLinks.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => setOpenState(false));
+  dropdowns.forEach((dropdown) => {
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+
+    if (!toggle) return;
+
+    toggle.addEventListener('click', (event) => {
+      if (window.innerWidth > 768) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const isCurrentlyOpen = dropdown.classList.contains('is-open');
+
+      // If this dropdown is already open, just close it
+      if (isCurrentlyOpen) {
+        dropdown.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        return;
+      }
+
+      // Otherwise, close all dropdowns and open this one
+      closeDropdowns();
+      dropdown.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    });
   });
 
-  backdrop.addEventListener('click', () => setOpenState(false));
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      setOpenState(false);
+    });
+  });
+
+  backdrop.addEventListener('click', () => {
+    setOpenState(false);
+  });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
