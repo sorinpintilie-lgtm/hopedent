@@ -439,9 +439,78 @@ textarea {
   gap: 0.35rem;
   font-size: 0.85rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all 0.2s;
+}
+
+/* For nav-phone with btn-hero-green class */
+.nav-phone.btn-hero-green {
+  background: var(--green);
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Override for solid nav states */
+#nav.solid .nav-phone.btn-hero-green,
+.inner-page #nav .nav-phone.btn-hero-green,
+#nav.nav-always-solid .nav-phone.btn-hero-green {
+  background: var(--green);
+  color: var(--white);
+}
+
+/* Hover states */
+.nav-phone.btn-hero-green:hover {
+  background: var(--green2);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Ensure SVG icon stays white */
+.nav-phone.btn-hero-green svg,
+#nav.solid .nav-phone.btn-hero-green svg,
+.inner-page #nav .nav-phone.btn-hero-green svg,
+#nav.nav-always-solid .nav-phone.btn-hero-green svg,
+.nav-phone.btn-hero-green:hover svg {
+  stroke: var(--white);
+}
+
+/* For nav-phone with btn-ghost-white class (keeping for other uses) */
+.nav-phone.btn-ghost-white {
+  color: rgba(255, 255, 255, 0.88);
+  padding: 0.85rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+#nav.solid .nav-phone.btn-ghost-white,
+.inner-page #nav .nav-phone.btn-ghost-white,
+#nav.nav-always-solid .nav-phone.btn-ghost-white {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.nav-phone.btn-ghost-white:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--white);
+}
+
+.nav-phone.btn-ghost-white:hover svg {
+  stroke: var(--white);
+}
+
+/* For nav-phone with btn-ghost-white class */
+.nav-phone.btn-ghost-white {
+  color: rgba(255, 255, 255, 0.88);
+  padding: 0.85rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 #nav.solid .nav-phone,
@@ -450,8 +519,20 @@ textarea {
   color: var(--text);
 }
 
+#nav.solid .nav-phone.btn-ghost-white,
+.inner-page #nav .nav-phone.btn-ghost-white,
+#nav.nav-always-solid .nav-phone.btn-ghost-white {
+  color: var(--green);
+  border-color: var(--green);
+}
+
 .nav-phone:hover {
   color: var(--gold);
+}
+
+.nav-phone.btn-ghost-white:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--white);
 }
 
 .nav-btn {
