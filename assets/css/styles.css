@@ -4801,14 +4801,7 @@ body.nav-open .site-menu-backdrop {
     position: static;
     transform: none;
     margin: 0.5rem;
-  }
-
-  .gallery-lightbox__nav--prev {
-    left: 0;
-  }
-
-  .gallery-lightbox__nav--next {
-    right: 0;
+    display: none;
   }
 
   .gallery-lightbox__close {
