@@ -416,20 +416,21 @@ function initLightboxGallery() {
   const gallery = document.querySelector('.gallery-grid');
   if (!gallery) return;
 
-  const items = Array.from(gallery.querySelectorAll('img, video')).map((item, index) => {
+  const allImgs = Array.from(gallery.querySelectorAll('img, video'));
+  const items = [];
+
+  allImgs.forEach((item, rawIndex) => {
     const videoSrc = item.getAttribute('data-video');
+    const parent = item.parentElement;
+    parent.style.cursor = 'pointer';
+    parent.style.position = 'relative';
     if (videoSrc) {
-      item.parentElement.style.cursor = 'pointer';
-      item.parentElement.style.position = 'relative';
-      item.parentElement.innerHTML += '<div class="gallery-play-overlay"><svg viewBox="0 0 24 24" width="48" height="48"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></div>';
-      return { element: item, videoSrc, index, isVideo: true };
+      parent.insertAdjacentHTML('beforeend', '<div class="gallery-play-overlay"><svg viewBox="0 0 24 24" width="48" height="48"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></div>');
+      items.push({ element: item, videoSrc, index: items.length, isVideo: true });
+    } else if (item.tagName !== 'VIDEO') {
+      items.push({ element: item, index: items.length, isVideo: false });
     }
-    if (item.tagName !== 'VIDEO') {
-      item.parentElement.style.cursor = 'pointer';
-      return { element: item, index, isVideo: false };
-    }
-    return null;
-  }).filter(Boolean);
+  });
 
   if (!items.length) return;
 
