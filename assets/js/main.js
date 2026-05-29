@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initCurrentYear(document);
   initSiteNavigation();
   initMobileSliders();
+  initLightboxGallery();
   initIncludeProtocolNotice();
 });
 
@@ -410,3 +411,140 @@ function initIncludeProtocolNotice() {
     '[HopeDent] Rulează proiectul prin Live Server sau localhost. Include-urile separate pentru header și footer nu sunt fiabile din file://.'
   );
 }
+
+function initLightboxGallery() {
+  const gallery = document.querySelector('.gallery-grid');
+  if (!gallery) return;
+
+  const items = Array.from(gallery.querySelectorAll('img, video')).map((item, index) => {
+    const videoSrc = item.getAttribute('data-video');
+    if (videoSrc) {
+      item.parentElement.style.cursor = 'pointer';
+      item.parentElement.style.position = 'relative';
+      item.parentElement.innerHTML += '<div class="gallery-play-overlay"><svg viewBox="0 0 24 24" width="48" height="48"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></div>';
+      return { element: item, videoSrc, index, isVideo: true };
+    }
+    if (item.tagName !== 'VIDEO') {
+      item.parentElement.style.cursor = 'pointer';
+      return { element: item, index, isVideo: false };
+    }
+    return null;
+  }).filter(Boolean);
+
+  if (!items.length) return;
+
+  items.forEach((itemInfo) => {
+    itemInfo.element.parentElement.addEventListener('click', (e) => {
+      e.preventDefault();
+      showLightbox(items, itemInfo.index);
+    });
+  });
+
+  function showLightbox(mediaItems, startIndex) {
+    const currentIndex = { value: startIndex };
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'gallery-lightbox';
+    lightbox.innerHTML = `
+      <div class="gallery-lightbox__overlay" data-close></div>
+      <div class="gallery-lightbox__content">
+        <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" data-prev aria-label="Anterior">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="gallery-lightbox__media" data-media-container></div>
+        <button class="gallery-lightbox__nav gallery-lightbox__nav--next" data-next aria-label="Următor">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+        <button class="gallery-lightbox__close" data-close aria-label="Închide">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41l5.59 5.59L5 17.59 6.41 19l5.59-5.59 5.59 5.59 1.41-1.41z"/></svg>
+        </button>
+        <div class="gallery-lightbox__counter" data-counter></div>
+      </div>
+    `;
+
+    document.body.appendChild(lightbox);
+    document.body.style.overflow = 'hidden';
+
+    const mediaContainer = lightbox.querySelector('[data-media-container]');
+    const counter = lightbox.querySelector('[data-counter]');
+    const prevBtn = lightbox.querySelector('[data-prev]');
+    const nextBtn = lightbox.querySelector('[data-next]');
+    const closeEls = lightbox.querySelectorAll('[data-close]');
+
+    function updateMedia(index) {
+      const itemInfo = mediaItems[index];
+      const clone = itemInfo.isVideo
+        ? createVideoElement(itemInfo.videoSrc)
+        : createImageElement(itemInfo.element.src, itemInfo.element.alt);
+
+      mediaContainer.innerHTML = '';
+      mediaContainer.appendChild(clone);
+
+      clone.style.opacity = '0';
+      clone.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => clone.style.opacity = '1', 50);
+
+      counter.textContent = `${index + 1} / ${mediaItems.length}`;
+    }
+
+    function createVideoElement(src) {
+      const video = document.createElement('video');
+      video.src = src;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.controls = true;
+      video.style.maxWidth = '90vw';
+      video.style.maxHeight = '85vh';
+      video.style.borderRadius = '12px';
+      video.style.boxShadow = '0 25px 60px rgba(0, 0, 0, 0.3)';
+      return video;
+    }
+
+    function createImageElement(src, alt) {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      img.style.maxWidth = '90vw';
+      img.style.maxHeight = '85vh';
+      img.style.borderRadius = '12px';
+      img.style.boxShadow = '0 25px 60px rgba(0, 0, 0, 0.3)';
+      return img;
+    }
+
+    function closeLightbox() {
+      document.body.style.overflow = '';
+      lightbox.remove();
+    }
+
+    function goToPrev() {
+      if (currentIndex.value > 0) {
+        currentIndex.value--;
+        updateMedia(currentIndex.value);
+      }
+    }
+
+    function goToNext() {
+      if (currentIndex.value < mediaItems.length - 1) {
+        currentIndex.value++;
+        updateMedia(currentIndex.value);
+      }
+    }
+
+    prevBtn.addEventListener('click', goToPrev);
+    nextBtn.addEventListener('click', goToNext);
+    closeEls.forEach(el => el.addEventListener('click', closeLightbox));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    });
+
+    updateMedia(startIndex);
+  }
+}
+
+const style = document.createElement('style');
+style.textContent = '.gallery-play-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(0,0,0,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;pointer-events:none}.gallery-item:hover .gallery-play-overlay{background:rgba(0,0,0,0.7)}';
+document.head.appendChild(style);
