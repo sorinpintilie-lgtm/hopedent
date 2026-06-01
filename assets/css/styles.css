@@ -1644,6 +1644,12 @@ body.nav-open .site-menu-backdrop {
   grid-row: span 2;
 }
 
+.gallery-item--video-landscape {
+  grid-column: span 2;
+  grid-row: span 1;
+  min-height: 220px;
+}
+
 .gallery-item--tall {
   grid-row: span 2;
   min-height: 300px;
